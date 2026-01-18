@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 function BooksList() {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     fetch('https://mon-vieux-grimoire-backend-lmkk.onrender.com/api/books')
       .then((res) => res.json())
       .then((data) => setBooks(data))
-      .catch((err) => console.error('Erreur API :', err))
-  }, [])
+      .catch((err) => console.error('Erreur API :', err));
+  }, []);
 
   return (
     <div>
@@ -19,7 +19,7 @@ function BooksList() {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default BooksList
+export default BooksList;
