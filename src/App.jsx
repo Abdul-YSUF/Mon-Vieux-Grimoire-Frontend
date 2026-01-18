@@ -19,6 +19,7 @@ function App() {
   useEffect(() => {
     setUser(connectedUser);
   }, [connectedUser]);
+
   return (
     <BrowserRouter>
       <div>
