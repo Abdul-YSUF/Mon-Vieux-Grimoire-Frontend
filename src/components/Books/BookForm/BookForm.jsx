@@ -49,6 +49,11 @@ function BookForm({ book, validate }) {
 
   const onSubmit = async (data) => {
     try {
+      if (!book && !data.file?.[0]) {
+        alert("Vous devez ajouter une image");
+        return;
+      }
+
       const formData = new FormData();
 
       if (data.file && data.file[0]) {
@@ -60,25 +65,25 @@ function BookForm({ book, validate }) {
         author: data.author,
         year: Number(data.year),
         genre: data.genre,
-        ratings: [],
       };
+
       formData.append("book", JSON.stringify(bookData));
 
       let response;
       if (!book) {
         response = await addBook(formData);
-      } else {
-        response = await updateBook(formData, data.id);
-      }
-
-      if (!response.error) {
-        if (!book) {
-          validate(true);
+        if (!response.error) {
+          validate?.(true);
         } else {
-          navigate("/");
+          alert(response.message || "Erreur lors de la création du livre");
         }
       } else {
-        alert(response.message);
+        response = await updateBook(formData, data.id);
+        if (!response.error) {
+          navigate("/");
+        } else {
+          alert(response.message || "Erreur lors de la modification du livre");
+        }
       }
     } catch (err) {
       console.error("Erreur submit BookForm:", err);
