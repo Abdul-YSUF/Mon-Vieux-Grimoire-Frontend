@@ -12,7 +12,6 @@ import AddBook from './pages/AddBook/AddBook'
 import UpdateBook from './pages/updateBook/UpdateBook'
 import { useUser } from './lib/customHooks'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-import BooksList from './components/BooksList'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -27,7 +26,6 @@ function App() {
       <div>
         <ScrollToTop />
         <Header user={user} setUser={setUser} />
-        <BooksList />
         <Routes>
           <Route index element={<Home />} />
           <Route path={APP_ROUTES.SIGN_IN} element={<SignIn setUser={setUser} />} />
