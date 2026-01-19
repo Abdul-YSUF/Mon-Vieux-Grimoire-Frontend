@@ -17,9 +17,11 @@ function Footer() {
           </a>
         </address>
       </div>
+      <div className={styles.ContactBlock}>
       <p>01 12 23 34 45</p>
       <p>Copyright 2022 - 2023</p>
       <p>Mentions légales</p>
+      </div>
     </footer>
 
   );
